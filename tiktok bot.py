@@ -165,7 +165,7 @@ vidUrl = input(">>> Your Video URL : ")
 bot = int(input(">>> What do you want to do? \n- 1 - Get Views \n- 2 - Get Followers \n- 3 - Get Shares \n- 4 - Get Likes \n- 5 - Get Comments Likes \n- Please insert your number : "))
 print("-----------------------------------------")
 
-PATH = "C:/Users/Farah's/Desktop/python projects/chromedriver.exe"
+PATH = " " #insert your chromdedriver path beetween the "" (read the README file for more details)
 driver = webdriver.Chrome(PATH)
 driver.get("https://zefoy.com/")
 

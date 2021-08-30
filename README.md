@@ -2,7 +2,7 @@
 A bot that generates followers, likes, views, shares and comment likes!
 
 # Requirements
-You must have python installed
+You must have python installed\
 You must download selenium and https://chromedriver.chromium.org/downloads
 
 # How To Use

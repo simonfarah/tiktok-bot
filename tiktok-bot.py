@@ -51,7 +51,7 @@ def loop2(): #followers
         print("")
         print(">>> Followers Sent <<<")
         print("")
-        sleep(1) #!!!!!!!!!!!!CHANGE
+        sleep(900)
         loop2()
     except:
         print("A generic error occurred. Now will retry again")

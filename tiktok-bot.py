@@ -1,5 +1,9 @@
+import os
 from selenium import webdriver
 from time import sleep
+from colorama import init, Fore
+
+init(autoreset=True)
 
 
 def loop1(): #views
@@ -51,7 +55,7 @@ def loop2(): #followers
         print("")
         print(">>> Followers Sent <<<")
         print("")
-        sleep(900)
+        sleep(1) #!!!!!!!!!!!!CHANGE
         loop2()
     except:
         print("A generic error occurred. Now will retry again")
@@ -149,23 +153,17 @@ def loop5(): #comment likes
 
 
 
-print("TikTok Bot By:")
-print("")
-print("███████╗██╗███╗   ███╗ ██████╗ ███╗   ██╗")
-print("██╔════╝██║████╗ ████║██╔═══██╗████╗  ██║")
-print("███████╗██║██╔████╔██║██║   ██║██╔██╗ ██║")
-print("╚════██║██║██║╚██╔╝██║██║   ██║██║╚██╗██║")
-print("███████║██║██║ ╚═╝ ██║╚██████╔╝██║ ╚████║")
-print("╚══════╝╚═╝╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═══╝")
-print("-----------------------------------------")
-print("Disclaimer: this bot is for educational purposes only,")
-print("            do not use it without the consent and approval of the video creator.")
-print("-----------------------------------------")
+print('\n------------- TIKTOK BOT -------------\n')
+print(Fore.RED + "Disclaimer: This tool is for educational purposes only")
+print(Fore.RED + "            Do not use it for illegal work or without the consent of the tiktok account owner")
+print(Fore.RED + "            I am not responsible for any action taken using this script")
+print(Fore.RED + "            I am not responsible for any damage of any kind for using this script")
+print('\n--------------------------------------\n')
 vidUrl = input(">>> Your Video URL : ")
-bot = int(input(">>> What do you want to do? \n- 1 - Get Views \n- 2 - Get Followers \n- 3 - Get Shares \n- 4 - Get Likes \n- 5 - Get Comments Likes \n- Please insert your number : "))
-print("-----------------------------------------")
+bot = int(input(">>> What do you want to do? \n> 1 - Get Views \n> 2 - Get Followers \n> 3 - Get Shares \n> 4 - Get Likes \n> 5 - Get Comments Likes \n> Please insert a number from the list : "))
+print("\n--------------------------------------")
 
-PATH = " " #insert your chromdedriver path beetween the "" (read the README file for more details)
+PATH = os.getcwd() + "/chromedriver.exe" # if you are not using windows, remove the .exe and run the script
 driver = webdriver.Chrome(PATH)
 driver.get("https://zefoy.com/")
 

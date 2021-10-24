@@ -1,5 +1,5 @@
 ## TikTok Bot
-A bot that generates followers, likes, views, shares and comment likes! (zefoy automated)
+A bot that generates followers, likes, views, shares and comment likes! (from zefoy / automatic process)
 
 ## Requirements
 * You must have python installed (of course)

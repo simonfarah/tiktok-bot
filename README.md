@@ -9,7 +9,7 @@ A bot that generates followers, likes, views, shares and comment likes! (from ze
       python -m pip install selenium  
 
 ## If you are not on Windows
-If you are not using windows, open the tiktok-bot.py file using any text editor, go down to line 166 and follow the instruction
+If you are not using windows, open the tiktok-bot.py file using any text editor, go down to line 174 and follow the instruction
 
 ## How to use
 1. Make sure you installed all the requirements

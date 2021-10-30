@@ -1,7 +1,7 @@
 import os
 from selenium import webdriver
 from time import sleep
-from colorama import init, Fore
+from colorama import init, Fore, Style
 
 init(autoreset=True)
 
@@ -153,29 +153,35 @@ def loop5(): #comment likes
 
 
 
-print('\n------------- TIKTOK BOT -------------\n')
-print(Fore.RED + "Disclaimer: This tool is for educational purposes only")
-print(Fore.RED + "            Do not use it for illegal work or without the consent of the tiktok account owner")
-print(Fore.RED + "            I am not responsible for any action taken using this script")
-print(Fore.RED + "            I am not responsible for any damage of any kind for using this script")
-print('\n--------------------------------------\n')
+print(Style.BRIGHT + '\n------------- TIKTOK BOT -------------\n')
+print(Fore.RED + "This tool is for educational purposes only")
+print(Fore.RED + "Do not use it for illegal work or without the consent of the tiktok account owner")
+print(Fore.RED + "I am not responsible for any action taken using this script")
+print(Fore.RED + "I am not responsible for any damage of any kind for using this script")
+print(Style.BRIGHT + '\n--------------------------------------\n')
 vidUrl = input(">>> Your Video URL : ")
 bot = int(input(">>> What do you want to do? \n> 1 - Get Views \n> 2 - Get Followers \n> 3 - Get Shares \n> 4 - Get Likes \n> 5 - Get Comments Likes \n> Please insert a number from the list : "))
 print("\n--------------------------------------")
 
-PATH = os.getcwd() + "/chromedriver.exe" # if you are not using windows, remove the .exe and run the script
-driver = webdriver.Chrome(PATH)
-driver.get("https://zefoy.com/")
-
-if bot == 1:
-    loop1()
-elif bot == 2:
-    loop2()
-elif bot == 3:
-    loop3()
-elif bot == 4:
-    loop4()
-elif bot == 5:
-    loop5()
+if (bot > 5):
+     print("You can insert just 1, 2, 3, 4 or 5\nExiting...")
+     sleep(5)
 else:
-    print("You can insert just 1, 2, 3, 4 or 5")
+    if (bot < 1):
+        print("You can insert just 1, 2, 3, 4 or 5\nExiting...")
+        sleep(5)
+    else:
+        PATH = os.getcwd() + "/chromedriver.exe" # if you are not using windows, remove the .exe and run the script
+        driver = webdriver.Chrome(PATH)
+        driver.get("https://zefoy.com/")
+
+        if bot == 1:
+            loop1()
+        elif bot == 2:
+            loop2()
+        elif bot == 3:
+            loop3()
+        elif bot == 4:
+            loop4()
+        else: #bot == 5
+            loop5()

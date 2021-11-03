@@ -163,25 +163,21 @@ vidUrl = input(">>> Your Video URL : ")
 bot = int(input(">>> What do you want to do? \n> 1 - Get Views \n> 2 - Get Followers \n> 3 - Get Shares \n> 4 - Get Likes \n> 5 - Get Comments Likes \n> Please insert a number from the list : "))
 print("\n--------------------------------------")
 
-if (bot > 5):
+if (bot > 5 or bot < 1):
      print("You can insert just 1, 2, 3, 4 or 5\nExiting...")
      sleep(5)
 else:
-    if (bot < 1):
-        print("You can insert just 1, 2, 3, 4 or 5\nExiting...")
-        sleep(5)
-    else:
-        PATH = os.getcwd() + "/chromedriver.exe" # if you are not using windows, remove the .exe and run the script
-        driver = webdriver.Chrome(PATH)
-        driver.get("https://zefoy.com/")
+    PATH = os.getcwd() + "/chromedriver.exe" # if you are not using windows, remove the .exe and run the script
+    driver = webdriver.Chrome(PATH)
+    driver.get("https://zefoy.com/")
 
-        if bot == 1:
-            loop1()
-        elif bot == 2:
-            loop2()
-        elif bot == 3:
-            loop3()
-        elif bot == 4:
-            loop4()
-        else: #bot == 5
-            loop5()
+    if bot == 1:
+        loop1()
+    elif bot == 2:
+        loop2()
+    elif bot == 3:
+        loop3()
+    elif bot == 4:
+        loop4()
+    else: #bot == 5
+        loop5()

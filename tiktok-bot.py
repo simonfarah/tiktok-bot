@@ -26,7 +26,7 @@ def loop1(): #views
         print("")
         print(">>> Views Sent <<<")
         print("")
-        sleep(620)
+        sleep(330)
         loop1()
     except:
         print("A generic error occurred. Now will retry again")
@@ -45,9 +45,9 @@ def loop2(): #followers
         loop2()
     try:
         sleep(2)
-        driver.find_element_by_xpath("/html/body/div[4]/div[2]/div/div/div/form/div/input").send_keys(vidUrl)
+        driver.find_element_by_xpath("//*[@id=\"sid\"]/div/form/div/input").send_keys(vidUrl)
         sleep(1)
-        driver.find_element_by_xpath("//*[@id=\"sid\"]/div/div/div/form/div/div/button").click()
+        driver.find_element_by_xpath("//*[@id=\"sid\"]/div/form/div/div/button").click()
         sleep(2)
         driver.find_element_by_xpath("//*[@id=\"c2VuZF9mb2xsb3dlcnNfdGlrdG9r\"]/div[1]/div/form/button").click()
         sleep(10)
@@ -55,7 +55,7 @@ def loop2(): #followers
         print("")
         print(">>> Followers Sent <<<")
         print("")
-        sleep(1) #!!!!!!!!!!!!CHANGE
+        sleep(2520)
         loop2()
     except:
         print("A generic error occurred. Now will retry again")
@@ -84,7 +84,7 @@ def loop3(): #shares
         print("")
         print(">>> Shares Sent <<<")
         print("")
-        sleep(315)
+        sleep(110)
         loop3()
     except:
         print("A generic error occurred. Now will retry again")
@@ -113,7 +113,7 @@ def loop4(): #likes
         print("")
         print(">>> Hearts Sent <<<")
         print("")
-        sleep(1800)
+        sleep(3015)
         loop4()
     except:
         print("A generic error occurred. Now will retry again")
@@ -143,7 +143,7 @@ def loop5(): #comment likes
         print("")
         print(">>> Comment Likes Sent <<<")
         print("")
-        sleep(50)        
+        sleep(60)        
         loop5()
     except:
         print("A generic error occurred. Now will retry again")

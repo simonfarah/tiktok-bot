@@ -78,7 +78,7 @@ def loop3(): #shares
         sleep(1)
         driver.find_element_by_xpath("/html/body/div[4]/div[6]/div/form/div/div/button").click()
         sleep(2)
-        driver.find_element_by_xpath("/html/body/div[4]/div[6]/div/div/div/div/div[1]/div/form/button").click()
+        driver.find_element_by_xpath("//*[@id=\"c2VuZC9mb2xsb3dlcnNfdGlrdG9s\"]/div/div/form/button").click()
         sleep(10)
         driver.refresh()
         print("")

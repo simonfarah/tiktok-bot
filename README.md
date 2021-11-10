@@ -4,9 +4,10 @@ A bot that generates followers, likes, views, shares and comment likes! (from ze
 ## Requirements
 * You must have python installed (of course)
 * You must install [chromedriver](https://chromedriver.chromium.org/downloads) in the tiktok-bot.py file directory
-* You must download selenium, here's how : open Terminal/Cmd and type the command below then press the Enter key
+* You must download selenium and colorama, here's how : open Terminal/Cmd and type the commands below then press the Enter key
 
-      python -m pip install selenium  
+      python -m pip install selenium
+      python -m pip install colorama
 
 ## If you are not on Windows
 If you are not using windows, open the tiktok-bot.py file using any text editor, go down to line 170 and follow the instruction

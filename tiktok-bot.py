@@ -6,7 +6,7 @@ from colorama import init, Fore, Style
 init(autoreset=True)
 
 
-def loop1(): #views
+def loop1():  # views
     sleep(20)
     try:
         driver.find_element_by_xpath("/html/body/div[4]/div[1]/div[3]/div/div[4]/div/button").click()
@@ -35,7 +35,7 @@ def loop1(): #views
         loop1()
 
 
-def loop2(): #followers
+def loop2():  # followers
     sleep(10)
     try:
         driver.find_element_by_xpath("/html/body/div[4]/div[1]/div[3]/div/div[1]/div/button").click()
@@ -64,7 +64,7 @@ def loop2(): #followers
         loop2()
 
 
-def loop3(): #shares
+def loop3():  # shares
     sleep(10)
     try:
         driver.find_element_by_xpath("/html/body/div[4]/div[1]/div[3]/div/div[5]/div/button").click()
@@ -93,7 +93,7 @@ def loop3(): #shares
         loop3()
 
 
-def loop4(): #likes
+def loop4():  # likes
     sleep(10)
     try:
         driver.find_element_by_xpath("/html/body/div[4]/div[1]/div[3]/div/div[2]/div/button").click()
@@ -122,7 +122,7 @@ def loop4(): #likes
         loop4()
 
 
-def loop5(): #comment likes
+def loop5():  # comment likes
     sleep(10)
     try:
         driver.find_element_by_xpath("/html/body/div[4]/div[1]/div[3]/div/div[3]/div/button").click()
@@ -143,7 +143,7 @@ def loop5(): #comment likes
         print("")
         print(">>> Comment Likes Sent <<<")
         print("")
-        sleep(60)        
+        sleep(60)
         loop5()
     except:
         print("A generic error occurred. Now will retry again")
@@ -152,32 +152,43 @@ def loop5(): #comment likes
         loop5()
 
 
+def banner():
+    print(Style.BRIGHT + '''
+---------- TikTok Bot ----------''' + Style.NORMAL + Fore.RED + '''
 
-print(Style.BRIGHT + '\n------------- TIKTOK BOT -------------\n')
-print(Fore.RED + "This tool is for educational purposes only")
-print(Fore.RED + "Do not use it for illegal work or without the consent of the tiktok account owner")
-print(Fore.RED + "I am not responsible for any action taken using this script")
-print(Fore.RED + "I am not responsible for any damage of any kind for using this script")
-print(Style.BRIGHT + '\n--------------------------------------\n')
-vidUrl = input(">>> Your Video URL : ")
-bot = int(input(">>> What do you want to do? \n> 1 - Get Views \n> 2 - Get Followers \n> 3 - Get Shares \n> 4 - Get Likes \n> 5 - Get Comments Likes \n> Please insert a number from the list : "))
-print("\n--------------------------------------")
+This tool is for educational purposes only
+Do not use it for illegal work or without the consent of the target
+I am not responsible for any action taken using this script
+I am not responsible for any damage of any kind for using this script''' + Fore.WHITE + Style.BRIGHT + '''
 
-if (bot > 5 or bot < 1):
-     print("You can insert just 1, 2, 3, 4 or 5\nExiting...")
-     sleep(5)
-else:
-    PATH = os.getcwd() + "/chromedriver.exe" # if you are not using windows, remove the .exe and run the script
-    driver = webdriver.Chrome(PATH)
-    driver.get("https://zefoy.com/")
+©copyright Simon Farah (https://www.github.com/simonfarah/)
+-------------------------------
+''')
 
-    if bot == 1:
-        loop1()
-    elif bot == 2:
-        loop2()
-    elif bot == 3:
-        loop3()
-    elif bot == 4:
-        loop4()
-    else: #bot == 5
-        loop5()
+
+if __name__ == '__main__':
+    banner()
+
+    vidUrl = input("Your Video URL : ")
+    print("")
+    bot = int(input("What do you want to do? \n1 - Get Views \n2 - Get Followers \n3 - Get Shares \n4 - Get Likes \n5 - Get Comments Likes \nPlease insert a number from the list : "))
+    print("\n--------------------------------------")
+
+    if (bot > 5 or bot < 1):
+        print("You can insert just 1, 2, 3, 4 or 5\nExiting...")
+        sleep(5)
+    else:
+        PATH = os.getcwd() + "/chromedriver.exe"  # if you are not using windows, remove the .exe and run the script
+        driver = webdriver.Chrome(PATH)
+        driver.get("https://zefoy.com/")
+
+        if bot == 1:
+            loop1()
+        elif bot == 2:
+            loop2()
+        elif bot == 3:
+            loop3()
+        elif bot == 4:
+            loop4()
+        else:  # bot == 5
+            loop5()

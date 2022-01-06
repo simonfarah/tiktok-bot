@@ -15,7 +15,9 @@ If you are not using windows, open the tiktok-bot.py file using any text editor,
 ## How to use
 1. Make sure you installed all the requirements
 2. If you are not using Windows follow the instruction above
-3. Run the tiktok-bot.py file and enjoy!
+3. Run the tiktok-bot.py file
+4. Wait till the chromedriver opens, and solve the captcha
+5. That's it! Now the bot will stars generating what you asked for
 
 ## Disclaimer
 * This tool is for educational purposes only

@@ -14,9 +14,9 @@
 
 <p align="center">
 <img src="https://img.shields.io/github/forks/simonfarah/tiktok-bot?color=EE1D52&style=flat-square">
-<img src="https://img.shields.io/github/stars/simonfarah/tiktok-bot?color=69C9D0&style=flat-square">
+<img src="https://img.shields.io/github/stars/simonfarah/tiktok-bot?color=EE1D52&style=flat-square">
 <img title="Forks" src="https://img.shields.io/github/followers/simonfarah?color=EE1D52&style=flat-square">
-<img src="https://img.shields.io/badge/maintained-yes-69C9D0?&style=flat-square">
+<img src="https://img.shields.io/badge/maintained-yes-EE1D52?&style=flat-square">
 </p>
 
 ## Requirements

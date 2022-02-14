@@ -1,9 +1,9 @@
-<h2 align="center">TikTok Bot</h2>
-<p align="center">A bot that generates followers, likes, views, shares and comment likes! (from zefoy / automatic process)<p>
+<h1 align="center">TikTok Bot</h1>
+<p align="center">A bot that generates followers, likes, views, shares and comment likes!<br>(from zefoy / automatic process)<p>
 
 <p align="center">
 <a href="https://github.com/simonfarah/tiktok-bot">
-<img src="https://img.shields.io/badge/tiktok bot-0088CC?&style=for-the-badge&logo=tiktok"></a>
+<img src="https://img.shields.io/badge/tiktok bot-EE1D52?&style=for-the-badge&logo=tiktok"></a>
 
 <img src="https://img.shields.io/badge/python-FFD43B?&style=for-the-badge&logo=python">
 </p>

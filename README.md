@@ -24,8 +24,8 @@
 * You must install [chromedriver](https://chromedriver.chromium.org/downloads) in the tiktok-bot.py file directory (chromedriver version must be the same as your chrome browser version)
 * You must download selenium and colorama, here's how : open Terminal/Cmd and type the commands below then press the Enter key
 
-      python -m pip install selenium==3.141.0
-      python -m pip install colorama
+      pip install selenium==3.141.0
+      pip install colorama
 
 ## If you are not on Windows
 If you are not using windows, open the tiktok-bot.py file using any text editor, go down to line 181 and follow the instruction

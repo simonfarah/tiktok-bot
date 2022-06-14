@@ -19,7 +19,7 @@
 <img src="https://img.shields.io/badge/maintained-no-EE1D52?&style=flat-square">
 </p>
 
-### NOTE: This repository is now archived. Code won't be maintained or developed to a better version. A second version of the bot, a faster and more effective one is in the making, but won't be made public till now.
+### NOTE: Code won't be maintained or developed to a better version. A second version of the bot, a faster and more effective one is in the making, but won't be made public till now.
 
 ## Requirements
 * You must have python installed (of course)

@@ -178,7 +178,7 @@ if __name__ == '__main__':
         print("You can insert just 1, 2, 3, 4 or 5\nExiting...")
         sleep(5)
     else:
-        PATH = os.getcwd() + "/chromedriver.exe"  # if you are not using windows, remove the .exe and run the script
+        PATH = os.getcwd() + "/chromedriver"  # if you are not using windows, remove the .exe and run the script
         driver = webdriver.Chrome(PATH)
         driver.get("https://zefoy.com/")
 

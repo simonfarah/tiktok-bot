@@ -1,5 +1,7 @@
 ## TikTok Bot
 
+⚠️ Note: this is an old version of the script and has not been updated. You may face a lot of bugs and errors. A new stable version is in the making.
+
 ### Requirements
 
 - Python 3.x
@@ -10,7 +12,7 @@
 
 ### If you are not on Windows
 
-If you are not using windows, open the `main.py` file using any text editor, go down to line 181 and follow the instruction
+If you are not using windows, open the `main.py` file using any text editor, go down to line 244 and follow the instruction
 
 ### How to use
 

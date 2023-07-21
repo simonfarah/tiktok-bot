@@ -1,24 +1,18 @@
 ## TikTok Bot
 
-⚠️ Note: this is an old version of the script and has not been updated. You may face a lot of bugs and errors. A new stable version is in the making.
-
 ### Requirements
 
 - Python 3.x
-- Have [chromedriver](https://chromedriver.chromium.org/downloads) in the root directory (chromedriver version must be the same as your chrome browser version)
-- Install the required modules
+- Have [chrome](https://www.google.com/chrome/) installed
+- Install the required modules (cd into the code directory and run this command)
 
       pip install -r requirements.txt
 
-### If you are not on Windows
-
-If you are not using windows, open the `main.py` file using any text editor, go down to line 244 and follow the instruction
-
 ### How to use
 
-1. Run the `main.py` file
-2. Wait till the chromedriver opens, and solve the captcha
-3. Minimize the chromedriver and continue working while the bot do its job
+1. Run the `bot.py` file
+2. Wait till the driver opens, and solve the captcha
+3. The driver will be minimized and you can continue working while the bot do its job
 
 ### Disclaimer
 

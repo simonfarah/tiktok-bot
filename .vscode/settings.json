@@ -4,20 +4,18 @@
   "editor.tabSize": 2,
   "editor.detectIndentation": false,
   "editor.insertSpaces": true,
-
   // view
   "editor.fontFamily": "Fira Code",
   "editor.fontLigatures": true,
-  "editor.fontSize": 16,
+  "editor.fontSize": 18,
   "editor.cursorStyle": "line",
   "editor.cursorBlinking": "smooth",
-  "editor.cursorSmoothCaretAnimation": true,
-
-  // formating and linting
+  "editor.cursorSmoothCaretAnimation": "on",
+  // formating
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
   "[python]": {
-    "editor.defaultFormatter": "ms-python.python"
+    "editor.defaultFormatter": "ms-python.black-formatter"
   },
-  "python.formatting.provider": "black"
+  "python.formatting.provider": "none"
 }

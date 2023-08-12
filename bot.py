@@ -3,6 +3,13 @@ from time import sleep
 from colorama import init, Fore
 import undetected_chromedriver as uc
 from selenium.common.exceptions import NoSuchElementException
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.webdriver import WebDriver
+from selenium.webdriver.common.by import By
+
 
 init(autoreset=True)
 
@@ -16,8 +23,10 @@ class Bot:
         print(Fore.YELLOW + "[~] Loading driver, please wait...")
 
         try:
-            self.driver = uc.Chrome()
+            # self.driver = uc.Chrome()
+            self.driver = self.setup_browser()
         except:
+            
             print(Fore.RED + "[!] No internet connection")
             exit()
 
@@ -59,6 +68,12 @@ class Bot:
             },
         }
 
+    def setup_browser(self) -> WebDriver:
+        options = Options()
+        options.add_experimental_option("detach", True)
+        options.add_experimental_option("excludeSwitches", ["enable-logging"])
+        return webdriver.Chrome(options=options, service=Service(ChromeDriverManager().install()))
+    
     def start(self):
         self.driver.get(self.url)
 

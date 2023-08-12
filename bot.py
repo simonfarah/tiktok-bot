@@ -1,7 +1,6 @@
 from os import system
 from time import sleep
 from colorama import init, Fore
-import undetected_chromedriver as uc
 from selenium.common.exceptions import NoSuchElementException
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -23,7 +22,6 @@ class Bot:
         print(Fore.YELLOW + "[~] Loading driver, please wait...")
 
         try:
-            # self.driver = uc.Chrome()
             self.driver = self.setup_browser()
         except:
             

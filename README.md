@@ -1,11 +1,11 @@
 # TikTok Bot
 
-This Python-based TikTok Bot automates various interactions on [Zefoy](https://zefoy.com/), such as increasing followers, hearts, views, shares, and more, using an undetected Chrome driver to navigate and interact with the website. The script is designed for educational purposes to demonstrate automation and web scraping techniques.
+This Python-based TikTok Bot automates various interactions on [Zefoy](https://zefoy.com/), such as increasing followers, hearts, views, shares, and more, using an Selenium to navigate and interact with the website. The script is designed for educational purposes to demonstrate automation and web scraping techniques.
 
 ## Features
 
 - Automated interactions on TikTok to increase followers, hearts, views, shares, and favorites.
-- Utilizes undetected Chromedriver for automation to mitigate detection risks.
+- Utilizes undetected Selenium for automation.
 - Interactive CLI for easy use and navigation through the bot's features.
 
 ## Prerequisites

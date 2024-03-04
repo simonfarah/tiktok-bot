@@ -11,7 +11,7 @@ This Python-based TikTok Bot automates various interactions on [Zefoy](https://z
 ## Prerequisites
 
 - [Python 3.x](https://www.python.org/downloads/)
-- [Google chrome Browser](https://www.google.com/chrome/)
+- [Google Chrome browser](https://www.google.com/chrome/)
 - Internet connection
 
 ## Installation
@@ -45,9 +45,8 @@ This tool is created for educational purposes only. The developer assumes no lia
 - **Consent**: Ensure you have the consent of the account holder before using this bot on any account.
 - **No Warranty**: This software is provided "as is", without warranty of any kind.
 
-By using this software, you agree to the terms of this disclaimer.
+By using this software, you agree to the terms of this disclaimer and to provided license.
 
 ## Contributions
 
 Contributions are welcome! If you have suggestions for improvements or bug fixes, please feel free to fork the repository and submit a pull request.
-

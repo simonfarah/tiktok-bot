@@ -8,9 +8,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import NoSuchElementException
+import random
 
 init(autoreset=True)
-
 
 class Bot:
     def __init__(self):
@@ -18,18 +18,27 @@ class Bot:
         self.printBanner()
         print(Fore.YELLOW + "[~] Loading driver, please wait...")
 
+        user_agents = [
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3",
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101 Firefox/55.0",
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36",
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Safari/605.1.15",
+            "Mozilla/5.0 (iPad; CPU OS 13_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.2 Mobile/15E148 Safari/604.1",
+            # Add more user agents as needed
+        ]
+
+        # Select a random user agent from the list
+        user_agent = random.choice(user_agents)
+
         try:
             options = Options()
-            options.add_argument(
-                "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
-            )
+            options.add_argument(f"--user-agent={user_agent}")  # Use the selected user agent
             self.driver = webdriver.Chrome(options=options)
-
-            print(Fore.GREEN + "[+] Driver loaded successfully")
-            print()
+            print(Fore.GREEN + "[+] Driver loaded successfully with User-Agent: " + user_agent)
         except Exception as e:
             print(Fore.RED + f"[!] Error loading driver: {e}")
             exit()
+
 
         self.url = "https://zefoy.com"
         self.captcha_xpath = "/html/body/div[5]/div[2]/form/div/div/div/div/button"
@@ -106,7 +115,8 @@ class Bot:
         div = 6 + choice
         service_key = list(self.services.keys())[choice - 1]
 
-        self.driver.find_element(By.XPATH, self.services[service_key]["xpath"]).click()
+        self.driver.find_element(
+            By.XPATH, self.services[service_key]["xpath"]).click()
 
         print()
         video_url = input(Fore.MAGENTA + "[-] Video URL : ")
@@ -117,7 +127,8 @@ class Bot:
     def start_service(self, div, video_url):
         url_input_xpath = f"/html/body/div[{div}]/div/form/div/input"
         search_btn_xpath = f"/html/body/div[{div}]/div/form/div/div/button"
-        send_btn_xpath = f"/html/body/div[{div}]/div/div/div[1]/div/form/button"
+        send_btn_xpath = f"/html/body/div[{
+            div}]/div/div/div[1]/div/form/button"
 
         input_element = self.driver.find_element(By.XPATH, url_input_xpath)
         input_element.clear()
@@ -139,7 +150,8 @@ class Bot:
             remaining_time = self.check_remaining_time(div)
 
             if remaining_time is not None:
-                print(Fore.YELLOW + f"[~] Sleeping for {remaining_time} seconds")
+                print(Fore.YELLOW +
+                      f"[~] Sleeping for {remaining_time} seconds")
                 sleep(remaining_time)
 
     def check_remaining_time(self, div):

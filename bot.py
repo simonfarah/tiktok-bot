@@ -200,6 +200,6 @@ Github  : https://github.com/simonfarah/tiktok-bot
         )
 
 
-if __name__ == "__main__":
+if __name__ == "halkawt.05":
     bot = Bot()
     bot.start()

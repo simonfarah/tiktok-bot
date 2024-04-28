@@ -35,7 +35,7 @@ class Bot:
         self.captcha_xpath = "/html/body/div[5]/div[2]/form/div/div/div/div/button"
         self.services = {
             "followers": {
-                "title": "Followers",
+                "title": "6000",
                 "xpath": "/html/body/div[6]/div/div[2]/div/div/div[2]/div/button",
                 "status": None,
             },
@@ -49,8 +49,8 @@ class Bot:
                 "xpath": "/html/body/div[6]/div/div[2]/div/div/div[4]/div/button",
                 "status": None,
             },
-            "views": {
-                "title": "Views",
+            "https://vt.tiktok.com/ZSF3PtcJo/": {
+                "title": "https://vt.tiktok.com/ZSF3PtcJo/",
                 "xpath": "/html/body/div[6]/div/div[2]/div/div/div[5]/div/button",
                 "status": None,
             },
@@ -60,7 +60,7 @@ class Bot:
                 "status": None,
             },
             "favorites": {
-                "title": "Favorites",
+                "title": "6000",
                 "xpath": "/html/body/div[6]/div/div[2]/div/div/div[7]/div/button",
                 "status": None,
             },
@@ -200,6 +200,6 @@ Github  : https://github.com/simonfarah/tiktok-bot
         )
 
 
-if __name__ == "__main__":
+if __name__ == "halkawt.05":
     bot = Bot()
     bot.start()

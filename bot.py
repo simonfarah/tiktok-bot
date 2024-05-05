@@ -35,7 +35,7 @@ class Bot:
         self.captcha_xpath = "/html/body/div[5]/div[2]/form/div/div/div/div/button"
         self.services = {
             "followers": {
-                "title": "Followers",
+                "title": "5000",
                 "xpath": "/html/body/div[6]/div/div[2]/div/div/div[2]/div/button",
                 "status": None,
             },
@@ -49,8 +49,8 @@ class Bot:
                 "xpath": "/html/body/div[6]/div/div[2]/div/div/div[4]/div/button",
                 "status": None,
             },
-            "views": {
-                "title": "Views",
+            "5000": {
+                "title": "https://vt.tiktok.com/ZSFEhMoxa/",
                 "xpath": "/html/body/div[6]/div/div[2]/div/div/div[5]/div/button",
                 "status": None,
             },
@@ -109,7 +109,7 @@ class Bot:
         self.driver.find_element(By.XPATH, self.services[service_key]["xpath"]).click()
 
         print()
-        video_url = input(Fore.MAGENTA + "[-] Video URL : ")
+        video_url = input(Fore.MAGENTA + "https://vt.tiktok.com/ZSFEhyc1E/")
         print()
 
         self.start_service(div, video_url)

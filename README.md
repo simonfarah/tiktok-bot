@@ -2,6 +2,24 @@
 
 This Python-based TikTok Bot automates various interactions on [Zefoy](https://zefoy.com/), such as increasing followers, hearts, views, shares, and more, using Selenium to navigate and interact with the website. The script is designed for educational purposes to demonstrate automation and web scraping techniques.
 
+## Sponsor
+
+SadCaptcha has paid to be here and I have no affiliation with them.
+
+<div align="center">
+  <hr>
+  <a href="https://www.sadcaptcha.com?ref=simonfarah" target="_blank">
+    <img src="https://sadcaptcha.b-cdn.net/tiktok3d.webp" width="100" alt="TikTok Captcha Solver">
+    <img src="https://sadcaptcha.b-cdn.net/tiktokrotate.webp" width="100" alt="TikTok Captcha Solver">
+    <img src="https://sadcaptcha.b-cdn.net/tiktokpuzzle.webp" width="100" alt="TikTok Captcha Solver">
+    <img src="https://sadcaptcha.b-cdn.net/tiktokicon.webp" width="100" alt="TikTok Captcha Solver">
+    <br/>
+    <div>
+         <b>TikTok Captcha Solver: </b> Bypass any TikTok captcha in just two lines of code.<br> Scale your TikTok automation and get unblocked with SadCaptcha.
+    </div>
+  </a>
+</div>
+
 ## Features
 
 - Automated interactions on TikTok to increase followers, hearts, views, shares, and favorites.

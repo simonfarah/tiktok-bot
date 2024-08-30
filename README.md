@@ -1,6 +1,6 @@
 # TikTok Bot
 
-This Python-based TikTok Bot automates various interactions on [Zefoy](https://zefoy.com/), such as increasing followers, hearts, views, shares, and more, using Selenium to navigate and interact with the website. The script is designed for educational purposes to demonstrate automation and web scraping techniques.
+This Python-based TikTok Bot automates various interactions on [Zefoy](https://zefoy.com/), such as increasing followers, hearts, views, shares, and more, using [Selenium](https://www.selenium.dev/) to navigate and interact with the website. The script is designed for educational purposes to demonstrate automation and web scraping techniques.
 
 ## Sponsor
 
@@ -20,23 +20,18 @@ SadCaptcha has paid to be here and I have no affiliation with them.
   </a>
 </div>
 
-## Features
-
-- Automated interactions on TikTok to increase followers, hearts, views, shares, and favorites.
-- Utilizes Selenium for automation.
-- Interactive CLI for easy use and navigation through the bot's features.
-
 ## Prerequisites
 
 - [Python 3.x](https://www.python.org/downloads/)
-- [Google Chrome browser](https://www.google.com/chrome/)
-- Internet connection
+- A browser installed with his corresponding driver
+- A good and stable internet connection
 
 ## Installation
 
 1. Clone the repository to your local machine.
-2. Install Google Chrome if not already installed.
-3. Navigate to the cloned directory and install the required Python packages:
+2. Install any browser of your choice as well as his corresponding driver.
+3. Edit the `_init_driver` function to comply with your browser and driver setup. (I configured mine with Firefox and kept the code as an example for you to better understand). If you face any difficulty, feel free to reach out and ask for help, or for special help, you can book a private online meeting with me to help you install and run the bot [here.](https://buymeacoffee.com/simonfarah/commissions)
+4. Navigate to the cloned directory and install the required Python packages:
 
 ```sh
 pip install -r requirements.txt
@@ -54,6 +49,23 @@ python bot.py
 
 4. Follow the CLI prompts to complete captchas and choose the service you want to automate (e.g., followers, hearts).
 5. Input the URL of the video you want to apply the service to when prompted.
+
+## Note
+
+The bot has not been tested with all the services of Zefoy. Few of them, due to the fact that they are most of the time offline, prevent me from running tests.
+
+These services have been successfully tested and are 100% working:
+
+- Hearts
+- Views
+- Shares
+- Favorites
+
+## Support
+
+Your donations keep me motivated to continue developing and creating more stuff. Support me [here.](https://buymeacoffee.com/simonfarah)
+
+You can book a private online meeting with me to help you install and run the bot [here.](https://buymeacoffee.com/simonfarah/commissions)
 
 ## Disclaimer
 

@@ -55,7 +55,9 @@ class Bot:
             options.add_argument("--height=700")
 
             service = webdriver.FirefoxService(log_output="geckodriver.log")
-            service.path = "/usr/local/bin/geckodriver"  # Assicurati che il percorso sia corretto
+            service.path = (
+                "/usr/local/bin/geckodriver"  # Assicurati che il percorso sia corretto
+            )
 
             driver = webdriver.Firefox(options=options, service=service)
 

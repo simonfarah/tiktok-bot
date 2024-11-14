@@ -56,7 +56,7 @@ class Bot:
 
             service = webdriver.FirefoxService(log_output="geckodriver.log")
             service.path = (
-                "/usr/local/bin/geckodriver"  # Assicurati che il percorso sia corretto
+                "/usr/local/bin/geckodriver"  # Make sure the path is correct
             )
 
             driver = webdriver.Firefox(options=options, service=service)

@@ -4,7 +4,12 @@ from time import sleep
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import (
+    NoSuchElementException,
+    ElementClickInterceptedException,
+)
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class Bot:
@@ -21,10 +26,12 @@ class Bot:
         self._solve_captcha()
 
         # Page refresh 1
+        print("[~] Refreshing page 1 / 2 \n")
         sleep(2)
         self.driver.refresh()
 
         # Page refresh 2
+        print("[~] Refreshing page 2 / 2 \n")
         sleep(2)
         self.driver.refresh()
 
@@ -50,14 +57,12 @@ class Bot:
             print("[~] Loading driver, please wait...")
 
             options = webdriver.FirefoxOptions()
-            options.binary_location = "/usr/bin/firefox"
+            options.binary_location = "C:\\Program Files\\Mozilla Firefox\\firefox.exe"
             options.add_argument("--width=800")
             options.add_argument("--height=700")
 
             service = webdriver.FirefoxService(log_output="geckodriver.log")
-            service.path = (
-                "/usr/local/bin/geckodriver"  # Make sure the path is correct
-            )
+            service.path = "C:/geckodriver.exe"  # Make sure the path is correct.
 
             driver = webdriver.Firefox(options=options, service=service)
 
@@ -189,18 +194,33 @@ class Bot:
         input_element.send_keys(video_url)
 
         while True:
-            # Click the search button
-            container.find_element(By.CSS_SELECTOR, "button.btn.btn-primary").click()
+            try:
+                # Click the search button using JavaScript
+                search_button = container.find_element(
+                    By.CSS_SELECTOR, "button.btn.btn-primary"
+                )
+                self.driver.execute_script("arguments[0].click();", search_button)
+                #print("[+] Search button clicked successfully") #For debugging
+            except ElementClickInterceptedException:
+                print(
+                    "[!] Element is obscured by another element. Attempting to close the ad iframe..."
+                )
+                self._close_ad_iframe()  # Attempt to close the ad iframe
+                continue  # Retry clicking the button
 
             sleep(3)
 
             # Click the submit button if it's present, otherwise pass
             try:
-                container.find_element(By.CSS_SELECTOR, "button.btn.btn-dark").click()
+                submit_button = container.find_element(
+                    By.CSS_SELECTOR, "button.btn.btn-dark"
+                )
+                self.driver.execute_script("arguments[0].click();", submit_button)
                 print(
                     "[~] {} sent successfully".format(self.services[service]["title"])
                 )
             except NoSuchElementException:
+                #print("[!] Submit button not found") #For debugging, does not necessarily mean something is not working
                 pass
 
             sleep(3)
@@ -214,6 +234,45 @@ class Bot:
                 sleep(remaining_time)
 
             print("\n")
+
+    def _close_ad_iframe(self):
+        try:
+            # Wait for the iframe to be present
+            WebDriverWait(self.driver, 10).until(
+                EC.presence_of_all_elements_located((By.TAG_NAME, "iframe"))
+            )
+            iframes = self.driver.find_elements(By.TAG_NAME, "iframe")
+
+            for iframe in iframes:
+                self.driver.switch_to.frame(iframe)  # Switch to each iframe
+                try:
+                    # Attempt to find and click any close button
+                    close_buttons = self.driver.find_elements(
+                        By.CSS_SELECTOR,
+                        "button.close-button-class, .close-button-class, .btn-close",
+                    )  # Add more selectors as needed
+                    for close_button in close_buttons:
+                        close_button.click()
+                        print("[+] Ad iframe closed successfully")
+                        self.driver.switch_to.default_content()  # Switch back to the main content
+                        return  # Exit after closing the ad
+                except NoSuchElementException:
+                    #print("[!] No close button found in this iframe") #For debugging
+                    pass
+                except Exception as e:
+                    #print("[!] Error closing ad iframe: {}".format(e))
+                    pass
+                finally:
+                    self.driver.switch_to.default_content()  # Ensure we switch back to the main content
+
+            # If no close button was found, try to remove the iframe using JavaScript
+            self.driver.execute_script(
+                "var iframes = document.getElementsByTagName('iframe'); for (var i = 0; i < iframes.length; i++) { iframes[i].parentNode.removeChild(iframes[i]); }"
+            )
+            #print("[+] All iframes removed using JavaScript") #For debugging
+
+        except Exception as e:
+            print("[!] Error handling ad iframes: {}".format(e))
 
     def _compute_remaining_time(self, container):
         try:

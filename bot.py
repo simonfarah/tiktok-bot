@@ -19,6 +19,15 @@ class Bot:
     def start(self):
         self.driver.get("https://zefoy.com")
         self._solve_captcha()
+
+        # Page refresh 1
+        sleep(2)
+        self.driver.refresh()
+
+        # Page refresh 2
+        sleep(2)
+        self.driver.refresh()
+
         self._check_services_status()
         self.driver.minimize_window()
         self._print_services_list()
@@ -41,12 +50,14 @@ class Bot:
             print("[~] Loading driver, please wait...")
 
             options = webdriver.FirefoxOptions()
-            options.binary_location = "C:\\Program Files\\Mozilla Firefox\\firefox.exe"
+            options.binary_location = "/usr/bin/firefox"
             options.add_argument("--width=800")
             options.add_argument("--height=700")
 
             service = webdriver.FirefoxService(log_output="geckodriver.log")
-            service.path = "geckodriver.exe"
+            service.path = (
+                "/usr/local/bin/geckodriver"  # Make sure the path is correct
+            )
 
             driver = webdriver.Firefox(options=options, service=service)
 
@@ -67,7 +78,7 @@ class Bot:
             },
             "hearts": {
                 "title": "Hearts",
-                "selector": "t-heart-button",
+                "selector": "t-hearts-button",
                 "status": None,
             },
             "comments_hearts": {

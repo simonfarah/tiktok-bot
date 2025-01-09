@@ -1,8 +1,14 @@
 import re
+import io
+import base64
 from os import system
 from time import sleep
-
+from PIL import Image
+import pytesseract
 from selenium import webdriver
+
+# Configure Tesseract executable path
+pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 
@@ -50,14 +56,13 @@ class Bot:
             print("[~] Loading driver, please wait...")
 
             options = webdriver.FirefoxOptions()
-            options.binary_location = "/usr/bin/firefox"
+            options.binary_location = r"C:\Program Files\Mozilla Firefox\firefox.exe"
             options.add_argument("--width=800")
             options.add_argument("--height=700")
 
             service = webdriver.FirefoxService(log_output="geckodriver.log")
-            service.path = (
-                "/usr/local/bin/geckodriver"  # Make sure the path is correct
-            )
+            service.path = r"C:\Users\Aloos\Documents\geckodriver.exe"
+
 
             driver = webdriver.Firefox(options=options, service=service)
 
@@ -109,13 +114,74 @@ class Bot:
         }
 
     def _solve_captcha(self):
-        self._wait_for_element(By.TAG_NAME, "input")
-        print("[~] Please complete the captcha")
+        print("[~] Attempting automatic CAPTCHA solving...")
+        try:
+            # Wait for CAPTCHA input field
+            print("[~] Waiting for CAPTCHA input field...")
+            input_field = self._wait_for_element(By.TAG_NAME, "input")
+            print("[+] Found CAPTCHA input field")
 
-        self._wait_for_element(By.LINK_TEXT, "Youtube")
-        print("[+] Captcha completed successfully")
-
-        print("\n")
+            # Wait for CAPTCHA container and image
+            print("[~] Waiting for CAPTCHA container...")
+            captcha_container = self._wait_for_element(By.CLASS_NAME, "card.mb-3.word-load")
+            print("[+] Found CAPTCHA container")
+            
+            print("[~] Locating CAPTCHA image...")
+            captcha_img = captcha_container.find_element(By.CLASS_NAME, "img-thumbnail")
+            print("[+] Found CAPTCHA image")
+            
+            try:
+                # Take screenshot of just the CAPTCHA image element
+                print("[~] Taking screenshot of CAPTCHA...")
+                img_data = captcha_img.screenshot_as_png
+                img = Image.open(io.BytesIO(img_data))
+                print("[+] Successfully captured CAPTCHA image")
+                
+                # Convert to grayscale for better OCR
+                print("[~] Processing image for OCR...")
+                img = img.convert('L')
+                
+                # Use OCR to get text
+                print("[~] Performing OCR on CAPTCHA...")
+                text = pytesseract.image_to_string(img).strip().lower()
+                if not text:
+                    raise ValueError("OCR failed to extract any text from CAPTCHA")
+                
+                text = ''.join(c for c in text if c.isalnum())
+                print(f"[+] OCR extracted text: {text}")
+                
+                # Enter the text
+                print("[~] Submitting OCR result...")
+                input_field.clear()
+                input_field.send_keys(text)
+                input_field.submit()
+                
+                # Verify if CAPTCHA was solved correctly
+                print("[~] Verifying CAPTCHA solution...")
+                try:
+                    self._wait_for_element(By.LINK_TEXT, "Youtube")
+                    print("[+] CAPTCHA solved automatically!")
+                    print("\n")
+                    return
+                except NoSuchElementException:
+                    print("[!] Automatic solution was incorrect")
+                    raise ValueError("CAPTCHA solution verification failed")
+                
+            except (ValueError, base64.binascii.Error) as e:
+                print(f"[!] Error processing CAPTCHA: {str(e)}")
+                raise
+            except pytesseract.TesseractError as e:
+                print(f"[!] OCR error: {str(e)}")
+                raise
+            
+        except Exception as e:
+            print("[!] Automatic CAPTCHA solving failed")
+            print(f"[!] Error details: {str(e)}")
+            print("[~] Falling back to manual solving...")
+            print("[~] Please complete the CAPTCHA manually")
+            self._wait_for_element(By.LINK_TEXT, "Youtube")
+            print("[+] CAPTCHA completed successfully")
+            print("\n")
 
     def _check_services_status(self):
         for service in self.services:

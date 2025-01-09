@@ -1192,3 +1192,150 @@ Exiting due to channel error.
 Exiting due to channel error.
 Exiting due to channel error.
 Exiting due to channel error.
+1736462648188	geckodriver	INFO	Listening on 127.0.0.1:56843
+1736462651245	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--width=800" "--height=700" "--remote-debu ... 4" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Aloos\\AppData\\Local\\Temp\\rust_mozprofilemJXoqb"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1736462651511	Marionette	INFO	Marionette enabled
+console.error: "Warning: unrecognized command line flag" "-width"
+console.error: "Warning: unrecognized command line flag" "-height"
+1736462651600	Marionette	INFO	Listening on port 56852
+WebDriver BiDi listening on ws://127.0.0.1:56844
+Read port: 56852
+1736462651696	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js, line 2: InternalError: too much recursion
+JavaScript error: https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js, line 2: InternalError: too much recursion
+JavaScript error: https://fundingchoicesmessages.google.com/f/AGSKWxUb0RBIjR7D5MVZ1ROvegDgGsknytHSoxU7fnj9JhV2h-QNhtyxJ2hn-L3ZfO4IoyEt_mDzRbJ-CaNr6PCrG4PRAzB8t3k_hR0251rc-SaBY3C4iU3hy54hwOoIIxmmoh-zKeE4RA==?fccs=W251bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLFsxNzM2NDYyNjY2LDEyMDAwMDAwXSxudWxsLG51bGwsbnVsbCxbbnVsbCxbN11dLCJodHRwczovL3plZm95LmNvbS8iLG51bGwsW1s4LCJLUjVNcm16Tm00NCJdLFs5LCJlbi1HQiJdLFsxOSwiMSJdLFsxNywiWzBdIl1dXQ, line 17: InternalError: too much recursion
+JavaScript warning: https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388 line 181 > Function, line 4: Script terminated by timeout at:
+anonymous@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388 line 181 > Function:4:1
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:72
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+
+1736462810303	Marionette	INFO	Stopped listening on port 56852
+Dynamically enable window occlusion 1

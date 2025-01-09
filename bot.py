@@ -229,7 +229,7 @@ class Bot:
                     print("\n")
                     return
                 except NoSuchElementException:
-                    print("[!] Automatic solution was incorrect")
+                    print("[!] Automatic solution was incorrect!")
                     raise ValueError("CAPTCHA solution verification failed")
                 
             except (ValueError, base64.binascii.Error) as e:

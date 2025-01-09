@@ -1,1 +1,3 @@
 selenium==4.11.0
+pytesseract==0.3.13
+Pillow==11.1.0

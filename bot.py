@@ -22,19 +22,69 @@ class Bot:
         self.driver = self._init_driver()
         self.services = self._init_services()
 
+    def _close_popups(self):
+        """Helper method to close any popups (ads, consent forms, etc)"""
+        
+        print("pop_up_seen")
+        try:
+            # Check for and close ad popups using multiple selectors
+            selectors = [
+                "[aria-label='Close ad']",
+                ".ns-ji8qz-e-5.close-button",  # Specific ad close button
+                "[class*='close-button']",     # Any element with close-button in class
+                "[class*='dismiss-button']",   # Any dismiss button
+                "button[class*='close']",      # Any button with close in class
+            ]
+            
+            for selector in selectors:
+                close_buttons = self.driver.find_elements(By.CSS_SELECTOR, selector)
+                for button in close_buttons:
+                    if button.is_displayed():
+                        try:
+                            print(f"[~] Found popup with selector '{selector}', attempting to close...")
+                            button.click()
+                            print("[+] Popup closed")
+                            sleep(0.5)  # Brief pause to let any animations complete
+                        except:
+                            pass
+            
+            # Check for and handle consent popup
+            try:
+                # Try multiple selectors for the consent button, from most to least specific
+                consent_selectors = [
+                    "button.fc-button.fc-cta-consent.fc-primary-button[role='button'][aria-label='Consent'][tabindex='0']",  # Exact match
+                    "button.fc-button.fc-cta-consent.fc-primary-button",  # Class-based
+                    ".fc-footer-buttons-container button[aria-label='Consent']",  # Container-based
+                    "button[aria-label='Consent']",  # Simple aria-label
+                ]
+                
+                for selector in consent_selectors:
+                    try:
+                        consent_button = self.driver.find_element(By.CSS_SELECTOR, selector)
+                        if consent_button.is_displayed():
+                            print(f"[~] Found consent popup with selector '{selector}'")
+                            # Scroll into view if needed
+                            self.driver.execute_script("arguments[0].scrollIntoView(true);", consent_button)
+                            sleep(0.5)  # Brief pause after scroll
+                            consent_button.click()
+                            print("[+] Consent popup handled")
+                            sleep(0.5)  # Wait for popup to close
+                            break
+                    except NoSuchElementException:
+                        continue
+            except Exception as e:
+                print(f"[!] Error handling consent popup: {str(e)}")
+                
+        except Exception as e:
+            print(f"[!] Error handling popups: {str(e)}")
+
     def start(self):
         self.driver.get("https://zefoy.com")
         
-        # Handle consent popup if it appears
-        try:
-            print("[~] Checking for consent popup...")
-            consent_button = self.driver.find_element(By.CLASS_NAME, "fc-button.fc-cta-consent.fc-primary-button")
-            print("[~] Clicking consent button...")
-            consent_button.click()
-            print("[+] Consent popup handled")
-        except NoSuchElementException:
-            print("[~] No consent popup found")
-            
+        # Initial popup check
+        self._close_popups()
+        
+        # Add periodic popup checks during CAPTCHA solving
         self._solve_captcha()
 
         # Page refresh 1
@@ -254,6 +304,9 @@ class Bot:
         return video_url
 
     def _start_service(self, service, video_url):
+        # Close any popups before starting
+        self._close_popups()
+        
         # Click on the corresponding service button
         self._wait_for_element(
             By.CLASS_NAME, self.services[service]["selector"]
@@ -270,10 +323,16 @@ class Bot:
         input_element.send_keys(video_url)
 
         while True:
+            # Close any popups before clicking
+            self._close_popups()
+            
             # Click the search button
             container.find_element(By.CSS_SELECTOR, "button.btn.btn-primary").click()
 
-            sleep(3)
+            sleep(2)
+            # Check for popups after search click
+            self._close_popups()
+            sleep(1)
 
             # Click the submit button if it's present, otherwise pass
             try:
@@ -284,7 +343,10 @@ class Bot:
             except NoSuchElementException:
                 pass
 
-            sleep(3)
+            sleep(2)
+            # Check for popups after submit
+            self._close_popups()
+            sleep(1)
 
             remaining_time = self._compute_remaining_time(container)
 

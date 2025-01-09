@@ -1217,8 +1217,10 @@ t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:
 t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
 t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
 t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
-t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
-t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944fecaExiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1ebcb5d6697.js?v=1732261388:181:75
 t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
 t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
 t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
@@ -1338,4 +1340,145 @@ t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:
 t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
 
 1736462810303	Marionette	INFO	Stopped listening on port 56852
+Dynamically enable window occlusion 1
+1736462934122	geckodriver	INFO	Listening on 127.0.0.1:57182
+1736462937150	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--width=800" "--height=700" "--remote-debu ... 3" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Aloos\\AppData\\Local\\Temp\\rust_mozprofileSmLfor"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1736462937514	Marionette	INFO	Marionette enabled
+console.error: "Warning: unrecognized command line flag" "-width"
+console.error: "Warning: unrecognized command line flag" "-height"
+1736462937611	Marionette	INFO	Listening on port 57195
+WebDriver BiDi listening on ws://127.0.0.1:57183
+Read port: 57195
+1736462937711	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: resource://devtools/server/actors/inspector/event-collector.js, line 542: debuggee 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js:2' would run
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript warning: https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388 line 181 > Function, line 4: Script terminated by timeout at:
+anonymous@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388 line 181 > Function:4:1
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:72
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d66JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+1736463250387	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+1736463250387	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/jQN_tiOKdJuWkTnZn4oDsZoaZomZcjYfSwgPAXYkMcw.js line 2 > eval line 4807 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js, line 59: Script terminated by timeout at:
+Nb@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:59:314
+Nh.prototype.querySelectorAll@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:140:161
+ho@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:243:943
+ws/<@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:323:300
+M/</<@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:91:480
+L/this.Fd@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:90:888
+n.next@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:80:523
+T/</</d<@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:102:355
+L/this.Fd@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:90:888
+n.next@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:80:523
+jh/c/</</<@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:131:320
+Xa@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:49:339
+Ua.prototype.flush@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:49:127
+Wa@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:48:483
+jh/c/</<@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:131:292
+vc.prototype.next@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:81:218
+n.Fd@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:80:756
+n.next@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:80:523
+rg/</</</<@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:121:515
+Sa.prototype.Ub/<@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:48:315
+rg/</</<@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:121:524
+vc.prototype.next@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:81:218
+n.Fd@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:80:756
+n.next@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:80:523
+rg/</</</<@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:121:515
+Sa.prototype.Ub/<@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:48:315
+rg/</</<@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:121:524
+vc.prototype.next@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:81:218
+n.Fd@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:80:756
+n.next@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:80:523
+h@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:93:477
+
+JavaScript warning: https://pagead2.googlesyndication.com/bg/jQN_tiOKdJuWkTnZn4oDsZoaZomZcjYfSwgPAXYkMcw.js line 2 > eval line 5246 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: resource://devtools/server/actors/utils/sources-manager.js, line 459: TypeError: channel is null
+JavaScript error: resource://devtools/server/actors/utils/sources-manager.js, line 459: TypeError: channel is null
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: , line 0: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+50c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+t@https://zefoy.com/assets/b5bec944feca03b750c101ebcb5d6697.js?v=1732261388:181:75
+
+1736463238626	Marionette	INFO	Stopped listening on port 57195
 Dynamically enable window occlusion 1

@@ -24,6 +24,17 @@ class Bot:
 
     def start(self):
         self.driver.get("https://zefoy.com")
+        
+        # Handle consent popup if it appears
+        try:
+            print("[~] Checking for consent popup...")
+            consent_button = self.driver.find_element(By.CLASS_NAME, "fc-button.fc-cta-consent.fc-primary-button")
+            print("[~] Clicking consent button...")
+            consent_button.click()
+            print("[+] Consent popup handled")
+        except NoSuchElementException:
+            print("[~] No consent popup found")
+            
         self._solve_captcha()
 
         # Page refresh 1
@@ -147,7 +158,11 @@ class Bot:
                 if not text:
                     raise ValueError("OCR failed to extract any text from CAPTCHA")
                 
+                # Clean up text and remove trailing 'q'
                 text = ''.join(c for c in text if c.isalnum())
+                if text.endswith('q'):
+                    text = text[:-1]
+                print("[~] Raw OCR text: {}".format(text))
                 print(f"[+] OCR extracted text: {text}")
                 
                 # Enter the text

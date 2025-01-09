@@ -7,7 +7,7 @@ from PIL import Image
 import pytesseract
 from selenium import webdriver
 
-# Configure Tesseract executable path
+# Configure Tesseract executable path, this allows tesseract to ex
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
@@ -117,12 +117,14 @@ class Bot:
             print("[~] Loading driver, please wait...")
 
             options = webdriver.FirefoxOptions()
-            options.binary_location = r"C:\Program Files\Mozilla Firefox\firefox.exe"
+            options.binary_location = "/usr/bin/firefox"
             options.add_argument("--width=800")
             options.add_argument("--height=700")
 
             service = webdriver.FirefoxService(log_output="geckodriver.log")
-            service.path = r"C:\Users\Aloos\Documents\geckodriver.exe"
+            service.path = (
+                "/usr/local/bin/geckodriver"  # Assicurati che il percorso sia corretto
+            )
 
 
             driver = webdriver.Firefox(options=options, service=service)

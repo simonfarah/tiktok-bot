@@ -6,11 +6,14 @@ from time import sleep
 from PIL import Image
 import pytesseract
 from selenium import webdriver
+import time
 
 # Configure Tesseract executable path
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 from selenium.webdriver.common.by import By
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoSuchElementException, TimeoutException
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class Bot:
@@ -176,155 +179,183 @@ class Bot:
 
     def _solve_captcha(self):
         print("[~] Attempting automatic CAPTCHA solving...")
-        try:
-            # Wait for CAPTCHA input field
-            print("[~] Waiting for CAPTCHA input field...")
-            input_field = self._wait_for_element(By.TAG_NAME, "input")
-            print("[+] Found CAPTCHA input field")
-
-            # Wait for CAPTCHA container and image
-            print("[~] Waiting for CAPTCHA container...")
-            captcha_container = self._wait_for_element(By.CLASS_NAME, "card.mb-3.word-load")
-            print("[+] Found CAPTCHA container")
-            
-            print("[~] Locating CAPTCHA image...")
-            captcha_img = captcha_container.find_element(By.CLASS_NAME, "img-thumbnail")
-            print("[+] Found CAPTCHA image")
-            
+        max_retries = 20
+        retry_count = 0
+        
+        while retry_count < max_retries:
             try:
-                # Take screenshot of just the CAPTCHA image element
-                print("[~] Taking screenshot of CAPTCHA...")
+                # Wait for CAPTCHA input field and container (previous code remains the same)
+                input_field = WebDriverWait(self.driver, 10).until(
+                    EC.presence_of_element_located((By.TAG_NAME, "input"))
+                )
+                captcha_container = WebDriverWait(self.driver, 10).until(
+                    EC.presence_of_element_located((By.CLASS_NAME, "card.mb-3.word-load"))
+                )
+                captcha_img = captcha_container.find_element(By.CLASS_NAME, "img-thumbnail")
+                
+                # Take screenshot of CAPTCHA image
                 img_data = captcha_img.screenshot_as_png
                 img = Image.open(io.BytesIO(img_data))
-                print("[+] Successfully captured CAPTCHA image")
                 
-                # Image preprocessing for better OCR
-                print("[~] Processing image for OCR...")
+                # Enhanced image preprocessing
+                print("[~] Applying enhanced image preprocessing...")
+                
                 # Convert to grayscale
                 img = img.convert('L')
-                # Increase contrast
-                img = img.point(lambda x: 0 if x < 128 else 255)
-                # Scale up image
-                img = img.resize((img.width * 2, img.height * 2), Image.Resampling.LANCZOS)
                 
-                # Use OCR to get text with optimized config
-                print("[~] Performing OCR on CAPTCHA...")
-                text = pytesseract.image_to_string(img).strip().lower()
+                # Increase contrast dramatically
+                # First, stretch the histogram to full range
+                min_gray = min(img.getdata())
+                max_gray = max(img.getdata())
+                img = img.point(lambda x: int(255 * (x - min_gray) / (max_gray - min_gray)))
+                
+                # Apply threshold with slight bias towards black
+                threshold = 180  # Adjusted threshold for better text extraction
+                img = img.point(lambda x: 0 if x < threshold else 255)
+                
+                # Resize image larger for better OCR
+                img = img.resize((img.width * 3, img.height * 3), Image.Resampling.BICUBIC)
+                
+                # Apply some noise reduction
+                from PIL import ImageFilter
+                img = img.filter(ImageFilter.MedianFilter(size=3))
+                
+                # Ensure white background and black text
+                img = img.point(lambda x: 255 if x > 128 else 0)
+                
+                # OCR with adjusted config
+                print("[~] Performing OCR with optimized settings...")
+                text = pytesseract.image_to_string(
+                    img,
+                    config='--psm 7 --oem 3 -c tessedit_char_whitelist=abcdefghijklmnopqrstuvwxyz tessedit_char_height_range="10-40"'
+                ).strip().lower()
+                
                 if not text:
-                    raise ValueError("OCR failed to extract any text from CAPTCHA")
+                    print("[!] OCR failed to extract text, retrying...")
+                    retry_count += 1
+                    self.driver.refresh()
+                    sleep(2)
+                    continue
                 
-                # Clean up text and remove trailing 'q'
-                text = ''.join(c for c in text if c.isalnum())
-                if text.endswith('q'):
-                    text = text[:-1]
-                print("[~] Raw OCR text: {}".format(text))
+                # Clean up text - more aggressive cleaning
+                text = ''.join(c for c in text if c.isalnum()).lower()
+                text = text.replace('0', 'o')  # Common OCR mistake
+                text = text.replace('1', 'l')  # Common OCR mistake
+                text = text.replace('5', 's')  # Common OCR mistake
+                
                 print(f"[+] OCR extracted text: {text}")
                 
-                # Enter the text
-                print("[~] Submitting OCR result...")
+                # Rest of the function remains the same...
                 input_field.clear()
-                input_field.send_keys(text + "b")
+                input_field.send_keys(text)
                 input_field.submit()
                 
-                # Verify if CAPTCHA was solved correctly
-                print("[~] Verifying CAPTCHA solution...")
-                try:
-                    self._wait_for_element(By.LINK_TEXT, "Youtube")
-                    print("[+] CAPTCHA solved automatically!")
-                    print("\n")
-                    return
-                except NoSuchElementException:
-                    print("[!] Automatic solution was incorrect!")
-                    # Find and click the close button on error modal
-                    close_selectors = [
-                        "button.close[data-dismiss='modal']",  # Header close button
-                        "button.btn.btn-secondary[data-dismiss='modal']"  # Footer close button
-                    ]
-                    modal_closed = False
-                    for selector in close_selectors:
-                        try:
-                            close_button = self.driver.find_element(By.CSS_SELECTOR, selector)
-                            if close_button.is_displayed():
-                                close_button.click()
-                                print("[+] Closed error modal")
-                                sleep(1)
-                                modal_closed = True
-                                break
-                        except NoSuchElementException:
-                            continue
-                    
-                    if not modal_closed:
-                        print("[!] Could not find error modal close buttons")
-                        raise ValueError("Could not close error modal")
-                    
-                    # Retry captcha
-                    print("[~] Retrying CAPTCHA...")
-                    return self._solve_captcha()
+                sleep(2)
                 
-            except (ValueError, base64.binascii.Error) as e:
-                print(f"[!] Error processing CAPTCHA: {str(e)}")
-                raise
-            except pytesseract.TesseractError as e:
-                print(f"[!] OCR error: {str(e)}")
-                raise
+                # Check for error modal
+                try:
+                    error_modal = WebDriverWait(self.driver, 3).until(
+                        EC.presence_of_element_located((By.CLASS_NAME, "modal-footer"))
+                    )
+                    print("[!] Error modal detected, refreshing page...")
+                    self.driver.refresh()
+                    sleep(2)
+                    retry_count += 1
+                    continue
+                except TimeoutException:
+                    try:
+                        success_element = WebDriverWait(self.driver, 5).until(
+                            EC.presence_of_element_located((
+                                By.CSS_SELECTOR, 
+                                ".container-fluid, .btn-group, [class*='success']"
+                            ))
+                        )
+                        print("[+] CAPTCHA solved successfully!")
+                        return True
+                    except TimeoutException:
+                        print("[!] Could not verify success, refreshing page...")
+                        self.driver.refresh()
+                        sleep(2)
+                        retry_count += 1
+                        continue
+                
+            except Exception as e:
+                print(f"[!] Error during CAPTCHA solving: {str(e)}")
+                self.driver.refresh()
+                sleep(2)
+                retry_count += 1
+        
+        print("[!] Failed to solve CAPTCHA after maximum retries")
+        return False
+
+    def _wait_for_error_modal(self, timeout=5):
+        """Wait for error modal to appear and handle it if found"""
+        try:
+            modal = WebDriverWait(self.driver, timeout).until(
+                EC.visibility_of_element_located((By.CLASS_NAME, "modal-footer"))
+            )
+            print("[!] Error modal detected")
             
-        except Exception as e:
-            print("[!] Automatic CAPTCHA solving failed")
-            print(f"[!] Error details: {str(e)}")
-            print("[~] Falling back to manual solving...")
-            print("[~] Please complete the CAPTCHA manually")
-            self._wait_for_element(By.LINK_TEXT, "Youtube")
-            print("[+] CAPTCHA completed successfully")
-            print("\n")
+            # Find and click close button
+            close_button = modal.find_element(
+                By.CSS_SELECTOR, 
+                "button.btn.btn-secondary.col-sm[data-dismiss='modal']"
+            )
+            close_button.click()
+            print("[+] Closed error modal")
+            sleep(1)
+            return True
+        except TimeoutException:
+            return False
 
     def _check_services_status(self):
-        for service in self.services:
-            selector = self.services[service]["selector"]
+            for service in self.services:
+                selector = self.services[service]["selector"]
 
-            try:
-                element = self.driver.find_element(By.CLASS_NAME, selector)
+                try:
+                    element = self.driver.find_element(By.CLASS_NAME, selector)
 
-                if element.is_enabled():
-                    self.services[service]["status"] = "[WORKING]"
-                else:
+                    if element.is_enabled():
+                        self.services[service]["status"] = "[WORKING]"
+                    else:
+                        self.services[service]["status"] = "[OFFLINE]"
+                except NoSuchElementException:
                     self.services[service]["status"] = "[OFFLINE]"
-            except NoSuchElementException:
-                self.services[service]["status"] = "[OFFLINE]"
 
     def _print_services_list(self):
-        for index, service in enumerate(self.services):
-            title = self.services[service]["title"]
-            status = self.services[service]["status"]
+            for index, service in enumerate(self.services):
+                title = self.services[service]["title"]
+                status = self.services[service]["status"]
 
-            print("[{}] {}".format(str(index + 1), title).ljust(30), status)
+                print("[{}] {}".format(str(index + 1), title).ljust(30), status)
 
-        print("\n")
+            print("\n")
 
     def _choose_service(self):
-        while True:
-            try:
-                choice = int(input("[~] Choose an option : "))
-            except ValueError:
-                print("[!] Invalid input format. Please try again...")
-                print("\n")
-                continue
-
-            if choice in range(1, 8):
-                key = list(self.services.keys())[choice - 1]
-
-                if self.services[key]["status"] == "[OFFLINE]":
-                    print("[!] Service is offline. Please choose another...")
+            while True:
+                try:
+                    choice = int(input("[~] Choose an option : "))
+                except ValueError:
+                    print("[!] Invalid input format. Please try again...")
                     print("\n")
                     continue
 
-                print("[+] You have chosen {}".format(self.services[key]["title"]))
-                print("\n")
-                break
-            else:
-                print("[!] No service found with this number")
-                print("\n")
+                if choice in range(1, 8):
+                    key = list(self.services.keys())[choice - 1]
 
-        return key
+                    if self.services[key]["status"] == "[OFFLINE]":
+                        print("[!] Service is offline. Please choose another...")
+                        print("\n")
+                        continue
+
+                    print("[+] You have chosen {}".format(self.services[key]["title"]))
+                    print("\n")
+                    break
+                else:
+                    print("[!] No service found with this number")
+                    print("\n")
+
+            return key
 
     def _choose_video_url(self):
         video_url = input("[~] Video URL : ")

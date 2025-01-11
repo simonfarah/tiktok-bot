@@ -7,7 +7,7 @@ from PIL import Image
 import pytesseract
 from selenium import webdriver
 
-# Configure Tesseract executable path, this allows tesseract to ex
+# Configure Tesseract executable path
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
@@ -117,14 +117,12 @@ class Bot:
             print("[~] Loading driver, please wait...")
 
             options = webdriver.FirefoxOptions()
-            options.binary_location = "/usr/bin/firefox"
+            options.binary_location = r"C:\Program Files\Mozilla Firefox\firefox.exe"
             options.add_argument("--width=800")
             options.add_argument("--height=700")
 
             service = webdriver.FirefoxService(log_output="geckodriver.log")
-            service.path = (
-                "/usr/local/bin/geckodriver"  # Assicurati che il percorso sia corretto
-            )
+            service.path = r"C:\Users\Aloos\Documents\geckodriver.exe"
 
 
             driver = webdriver.Firefox(options=options, service=service)
@@ -200,11 +198,16 @@ class Bot:
                 img = Image.open(io.BytesIO(img_data))
                 print("[+] Successfully captured CAPTCHA image")
                 
-                # Convert to grayscale for better OCR
+                # Image preprocessing for better OCR
                 print("[~] Processing image for OCR...")
+                # Convert to grayscale
                 img = img.convert('L')
+                # Increase contrast
+                img = img.point(lambda x: 0 if x < 128 else 255)
+                # Scale up image
+                img = img.resize((img.width * 2, img.height * 2), Image.Resampling.LANCZOS)
                 
-                # Use OCR to get text
+                # Use OCR to get text with optimized config
                 print("[~] Performing OCR on CAPTCHA...")
                 text = pytesseract.image_to_string(img).strip().lower()
                 if not text:
@@ -220,7 +223,7 @@ class Bot:
                 # Enter the text
                 print("[~] Submitting OCR result...")
                 input_field.clear()
-                input_field.send_keys(text)
+                input_field.send_keys(text + "b")
                 input_field.submit()
                 
                 # Verify if CAPTCHA was solved correctly
@@ -232,7 +235,31 @@ class Bot:
                     return
                 except NoSuchElementException:
                     print("[!] Automatic solution was incorrect!")
-                    raise ValueError("CAPTCHA solution verification failed")
+                    # Find and click the close button on error modal
+                    close_selectors = [
+                        "button.close[data-dismiss='modal']",  # Header close button
+                        "button.btn.btn-secondary[data-dismiss='modal']"  # Footer close button
+                    ]
+                    modal_closed = False
+                    for selector in close_selectors:
+                        try:
+                            close_button = self.driver.find_element(By.CSS_SELECTOR, selector)
+                            if close_button.is_displayed():
+                                close_button.click()
+                                print("[+] Closed error modal")
+                                sleep(1)
+                                modal_closed = True
+                                break
+                        except NoSuchElementException:
+                            continue
+                    
+                    if not modal_closed:
+                        print("[!] Could not find error modal close buttons")
+                        raise ValueError("Could not close error modal")
+                    
+                    # Retry captcha
+                    print("[~] Retrying CAPTCHA...")
+                    return self._solve_captcha()
                 
             except (ValueError, base64.binascii.Error) as e:
                 print(f"[!] Error processing CAPTCHA: {str(e)}")

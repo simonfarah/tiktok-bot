@@ -7,7 +7,9 @@ from PIL import Image
 import pytesseract
 from selenium import webdriver
 import time
-
+from PIL import ImageEnhance, ImageFilter
+import cv2
+from skimage import filters
 # Configure Tesseract executable path
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 from selenium.webdriver.common.by import By
@@ -184,7 +186,7 @@ class Bot:
         
         while retry_count < max_retries:
             try:
-                # Wait for CAPTCHA input field and container (previous code remains the same)
+                # Wait for CAPTCHA elements
                 input_field = WebDriverWait(self.driver, 10).until(
                     EC.presence_of_element_located((By.TAG_NAME, "input"))
                 )
@@ -193,42 +195,34 @@ class Bot:
                 )
                 captcha_img = captcha_container.find_element(By.CLASS_NAME, "img-thumbnail")
                 
-                # Take screenshot of CAPTCHA image
+                # Capture CAPTCHA image
                 img_data = captcha_img.screenshot_as_png
                 img = Image.open(io.BytesIO(img_data))
                 
-                # Enhanced image preprocessing
-                print("[~] Applying enhanced image preprocessing...")
+                print("[~] Applying simplified image preprocessing...")
                 
                 # Convert to grayscale
                 img = img.convert('L')
                 
-                # Increase contrast dramatically
-                # First, stretch the histogram to full range
-                min_gray = min(img.getdata())
-                max_gray = max(img.getdata())
-                img = img.point(lambda x: int(255 * (x - min_gray) / (max_gray - min_gray)))
+                # Basic contrast enhancement
+                enhancer = ImageEnhance.Contrast(img)
+                img = enhancer.enhance(2.0)  # Increase contrast
                 
-                # Apply threshold with slight bias towards black
-                threshold = 180  # Adjusted threshold for better text extraction
-                img = img.point(lambda x: 0 if x < threshold else 255)
+                # Simple thresholding
+                img = img.point(lambda x: 0 if x < 150 else 255)
                 
-                # Resize image larger for better OCR
-                img = img.resize((img.width * 3, img.height * 3), Image.Resampling.BICUBIC)
+                # Scale up image
+                img = img.resize((img.width * 4, img.height * 4), Image.Resampling.BICUBIC)
                 
-                # Apply some noise reduction
-                from PIL import ImageFilter
-                img = img.filter(ImageFilter.MedianFilter(size=3))
+                # Add white border
+                border = 30
+                new_img = Image.new('L', (img.width + 2*border, img.height + 2*border), 255)
+                new_img.paste(img, (border, border))
+                img = new_img
                 
-                # Ensure white background and black text
-                img = img.point(lambda x: 255 if x > 128 else 0)
-                
-                # OCR with adjusted config
-                print("[~] Performing OCR with optimized settings...")
-                text = pytesseract.image_to_string(
-                    img,
-                    config='--psm 7 --oem 3 -c tessedit_char_whitelist=abcdefghijklmnopqrstuvwxyz tessedit_char_height_range="10-40"'
-                ).strip().lower()
+                print("[~] Performing OCR with basic settings...")
+                custom_config = '--psm 7 --oem 3 -c tessedit_char_whitelist=abcdefghijklmnopqrstuvwxyz'
+                text = pytesseract.image_to_string(img, config=custom_config).strip().lower()
                 
                 if not text:
                     print("[!] OCR failed to extract text, retrying...")
@@ -237,22 +231,27 @@ class Bot:
                     sleep(2)
                     continue
                 
-                # Clean up text - more aggressive cleaning
-                text = ''.join(c for c in text if c.isalnum()).lower()
-                text = text.replace('0', 'o')  # Common OCR mistake
-                text = text.replace('1', 'l')  # Common OCR mistake
-                text = text.replace('5', 's')  # Common OCR mistake
+                # Simple text cleaning
+                text = ''.join(c for c in text if c.isalpha()).lower()
                 
                 print(f"[+] OCR extracted text: {text}")
                 
-                # Rest of the function remains the same...
+                # Submit and verify
                 input_field.clear()
                 input_field.send_keys(text)
                 input_field.submit()
                 
                 sleep(2)
                 
-                # Check for error modal
+                try:
+                    youtube = self.driver.find_element(By.LINK_TEXT, "Youtube")
+                    if youtube.is_displayed():
+                        print("[+] CAPTCHA solved automatically!")
+                        print("\n")
+                        return True
+                except NoSuchElementException:
+                    pass
+                
                 try:
                     error_modal = WebDriverWait(self.driver, 3).until(
                         EC.presence_of_element_located((By.CLASS_NAME, "modal-footer"))
@@ -263,22 +262,12 @@ class Bot:
                     retry_count += 1
                     continue
                 except TimeoutException:
-                    try:
-                        success_element = WebDriverWait(self.driver, 5).until(
-                            EC.presence_of_element_located((
-                                By.CSS_SELECTOR, 
-                                ".container-fluid, .btn-group, [class*='success']"
-                            ))
-                        )
-                        print("[+] CAPTCHA solved successfully!")
-                        return True
-                    except TimeoutException:
-                        print("[!] Could not verify success, refreshing page...")
-                        self.driver.refresh()
-                        sleep(2)
-                        retry_count += 1
-                        continue
-                
+                    print("[!] Could not verify result, refreshing page...")
+                    self.driver.refresh()
+                    sleep(2)
+                    retry_count += 1
+                    continue
+                    
             except Exception as e:
                 print(f"[!] Error during CAPTCHA solving: {str(e)}")
                 self.driver.refresh()
@@ -287,7 +276,6 @@ class Bot:
         
         print("[!] Failed to solve CAPTCHA after maximum retries")
         return False
-
     def _wait_for_error_modal(self, timeout=5):
         """Wait for error modal to appear and handle it if found"""
         try:

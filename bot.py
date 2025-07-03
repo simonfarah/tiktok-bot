@@ -49,17 +49,13 @@ class Bot:
         try:
             print("[~] Loading driver, please wait...")
 
-            options = webdriver.FirefoxOptions()
-            options.binary_location = "/usr/bin/firefox"
-            options.add_argument("--width=800")
-            options.add_argument("--height=700")
+            options = ChromeOptions()
+options.binary_location = "/usr/bin/google-chrome"  # Adjust if Chrome is installed elsewhere
+options.add_argument("--window-size=800,700")
 
-            service = webdriver.FirefoxService(log_output="geckodriver.log")
-            service.path = (
-                "/usr/local/bin/geckodriver"  # Make sure the path is correct
-            )
+service = ChromeService(executable_path="/usr/local/bin/chromedriver")  # Make sure this path is correct
 
-            driver = webdriver.Firefox(options=options, service=service)
+driver = webdriver.Chrome(service=service, options=options)
 
             print("[+] Driver loaded successfully")
         except Exception as e:

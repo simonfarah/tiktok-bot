@@ -12,7 +12,7 @@ This Python-based TikTok Bot automates various interactions on [Zefoy](https://z
 
 1. Clone the repository to your local machine.
 2. Install any browser of your choice as well as his corresponding driver.
-3. Edit the `_init_driver` function to comply with your browser and driver setup. (I configured mine with Firefox and kept the code as an example for you to better understand). If you face any difficulty, feel free to reach out and ask for help, or for special help, you can book a private online meeting with me to help you install and run the bot [here.](https://buymeacoffee.com/simonfarah/commissions/20388)
+3. Edit the `_init_driver` function to comply with your browser and driver setup. (I configured mine with Firefox and kept the code as an example for you to better understand).
 4. Navigate to the cloned directory and install the required Python packages:
 
 ```sh
@@ -42,12 +42,6 @@ These services have been successfully tested and are 100% working:
 - Views
 - Shares
 - Favorites
-
-## Support
-
-Your donations keep me motivated to continue developing and creating more stuff. Support me [here.](https://buymeacoffee.com/simonfarah)
-
-You can book a private online meeting with me to help you install and run the bot [here.](https://buymeacoffee.com/simonfarah/commissions/20388)
 
 ## Disclaimer
 
